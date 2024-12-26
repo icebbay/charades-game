@@ -1,0 +1,29 @@
+{
+    "name": "你演我猜",
+    "short_name": "你演我猜",
+    "description": "一个有趣的线下派对游戏",
+    "start_url": "/charades-game/",
+    "scope": "/charades-game/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f0f0f0",
+    "theme_color": "#4CAF50",
+    "icons": [
+        {
+            "src": "assets/icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "prefer_related_applications": false,
+    "categories": ["games", "entertainment"],
+    "lang": "zh",
+    "dir": "ltr"
+}

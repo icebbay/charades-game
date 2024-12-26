@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="你演我猜">
+    <meta name="description" content="一个有趣的线下派对游戏">
+    <title>Charades - 你演我猜</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
+    <link rel="shortcut icon" href="assets/icon.png">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 类别选择界面 -->
+    <div id="categorySelection" class="container">
+        <div class="top-bar">
+            <h1 data-i18n="title">你演我猜</h1>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
+        <div class="category-carousel">
+            <div class="category-carousel-inner">
+                <!-- 类别项会通过JavaScript动态添加 -->
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <button class="start-game-btn" onclick="showTimeSelection()" data-i18n="startGame" disabled>开始游戏</button>
+        </div>
+    </div>
+
+    <!-- 时间选择界面 -->
+    <div id="timeSelection" class="container" style="display: none;">
+        <div class="top-bar">
+            <button class="back-btn" onclick="showCategorySelection()">
+                <span class="back-icon">←</span>
+            </button>
+            <h1 data-i18n="selectTime">选择时长</h1>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
+        <div class="time-selection-content">
+            <div class="time-options">
+                <button class="time-option" data-seconds="30">30s</button>
+                <button class="time-option" data-seconds="60">60s</button>
+                <button class="time-option" data-seconds="120">120s</button>
+                <button class="time-option" data-seconds="180">180s</button>
+            </div>
+            <div class="custom-time">
+                <label for="duration" data-i18n="customTime">自定义时长</label>
+                <div class="custom-time-input">
+                    <input type="number" id="duration" min="10" max="300" value="60" step="10">
+                    <span data-i18n="seconds">秒</span>
+                </div>
+            </div>
+            <button class="start-game-btn large" onclick="startGame()" data-i18n="startGame">开始游戏</button>
+        </div>
+    </div>
+
+    <!-- 自定义词汇输入界面 -->
+    <div id="customWordsInput" class="container" style="display: none;">
+        <div class="top-bar">
+            <button class="back-btn" onclick="showCategorySelection()">
+                <span class="back-icon">←</span>
+            </button>
+            <h1>输入自定义词汇</h1>
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
+        </div>
+        <div class="custom-words-content">
+            <div class="input-container">
+                <textarea id="customWords" placeholder="请输入词汇，每行一个词"></textarea>
+            </div>
+            <button class="start-game-btn large" onclick="proceedToTimeSelection()">确认</button>
+        </div>
+    </div>
+
+    <!-- 游戏区域 -->
+    <div id="gameArea" class="container" style="display: none;">
+        <div class="top-bar">
+            <button class="back-btn" onclick="confirmReturn()">
+                <span class="back-icon">←</span>
+            </button>
+            <div class="game-info">
+                <span data-i18n="timeLeft">剩余时间</span>: <span id="timeLeft">1:00</span>
+                <span data-i18n="score">得分</span>: <span id="currentScore">0</span>
+            </div>
+        </div>
+        <div class="game-content">
+            <div class="action-area skip-area" onclick="handleAreaClick('skip')">
+                <span class="action-text">✖</span>
+            </div>
+            <div class="word-display" id="word"></div>
+            <div class="action-area correct-area" onclick="handleAreaClick('correct')">
+                <span class="action-text">✔</span>
+            </div>
+            <div id="gameInstruction" class="game-instruction">
+                <div class="instruction-content">
+                    <div class="instruction-side left" data-i18n="tapLeftSkip">点击左侧跳过</div>
+                    <div class="instruction-side right" data-i18n="tapRightCorrect">点击右侧得分</div>
+                </div>
+                <div class="instruction-start" data-i18n="tapToStart">点击任意区域开始游戏</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结果界面 -->
+    <div id="result" class="container" style="display: none;">
+        <div class="top-bar">
+            <h1 data-i18n="gameResult">游戏结果</h1>
+            <button class="home-btn" onclick="showCategorySelection()">
+                <span data-i18n="home">主页</span>
+            </button>
+        </div>
+        <div class="result-content">
+            <h2 id="finalScore" class="final-score"></h2>
+            <div class="word-list-container">
+                <ul class="word-list" id="wordList"></ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 在底部加载脚本 -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
