@@ -759,7 +759,7 @@ textarea:focus {
     border-color: var(--primary-color);
 }
 
-/* ���板设备优化 */
+/* 平板设备优化 */
 @media (min-width: 768px) and (max-width: 1024px) {
     .category-item {
         width: 92%;
@@ -823,13 +823,75 @@ textarea:focus {
         background-color: #121212;
         color: #ffffff;
     }
+    
     .container {
         background-color: #1e1e1e;
     }
-    .action-area {
-        background-color: #333333;
+    
+    .word-display {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
-    /* Add more styles as needed */
+    
+    .action-area.skip-area {
+        background-color: rgba(255, 99, 71, 0.2);
+    }
+    
+    .action-area.skip-area:hover {
+        background-color: rgba(255, 99, 71, 0.3);
+    }
+    
+    .action-area.correct-area {
+        background-color: rgba(76, 175, 80, 0.2);
+    }
+    
+    .action-area.correct-area:hover {
+        background-color: rgba(76, 175, 80, 0.3);
+    }
+    
+    .time-option {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+    
+    .time-option.selected {
+        background-color: var(--primary-color);
+        color: #ffffff;
+    }
+    
+    .custom-time-input {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+    
+    #duration {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+    
+    .word-list-container {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+    
+    .word-list li {
+        border-bottom-color: #444;
+    }
+    
+    .input-container {
+        background-color: #2d2d2d;
+    }
+    
+    #customWords {
+        background-color: #2d2d2d;
+        color: #ffffff;
+        border-color: #444;
+    }
+    
+    #customWords:focus {
+        border-color: var(--primary-color);
+    }
 }
 
 /* 打印模式支持 */
